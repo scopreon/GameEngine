@@ -9,16 +9,24 @@ Game::Game(){
     this->state = new State();
 }
 
-void Game::start(){
+int Game::start(){
     bool state;
     while(true){
         this->getState()->print();
-        this->player1->makeMove();
+        int make_move_response = this->player1->makeMove();
+        if(!make_move_response){
+            std::cerr << "Error making a move";
+            return 2;
+        }
         state = this->getState()->checkEnd();
         if(state == FINISHED){
             break;
         }
-        this->player2->makeMove();
+        int make_move_response = this->player2->makeMove();
+        if(!make_move_response){
+            std::cerr << "Error making a move";
+            return 2;
+        }
         state = this->state->checkEnd();
         if(state == FINISHED){
             break;
@@ -39,9 +47,10 @@ void Game::start(){
 
     }
     std::cout << "Thank you for playing" << std::endl;
+    return 0;
 }
 
-void Game::end(){
+int Game::end(){
 
 }
 

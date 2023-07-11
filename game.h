@@ -7,11 +7,11 @@ class State;
 class Game{
     public:
         Game();
-        void start();
-        void end();
         State *getState();
-        void importGame();
-        void exportGame();
+        int start();
+        int end();
+        virtual void importGame();
+        virtual void exportGame();
     private:
         State *state;
         Player *player1;

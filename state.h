@@ -8,11 +8,12 @@ enum states {PLAYING, FINISHED, WINNER_1, WINNER_2, DRAW};
 class State{
     public:
         bool turn;
-        int evaluatePosition();
-        State* possibleStates();
-        bool checkEnd(){return PLAYING;}
-        int winner(){return DRAW;}
-        void print();
+        std::vector<State> possibleStates();
+        
+        virtual int evaluatePosition();
+        virtual bool checkEnd(){return PLAYING;}
+        virtual int winner(){return DRAW;}
+        virtual void print();
 };
 
 

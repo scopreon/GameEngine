@@ -7,7 +7,7 @@ class Player{
     public:
         Player(Game * game);
         char name[64];
-        void makeMove();
+        virtual int makeMove();
     private:
         Game *game;
         // upcasting so can be assigned
